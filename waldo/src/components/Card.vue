@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div v-for="item in dataSet" class="box">
+		<div v-for="item in dataSet" :key="item ? item.index : 0" class="box">
 			<article class="media" v-if="item">
 				{{ item.index }}
 				<div class="media-left has-text-centered is-centered">
