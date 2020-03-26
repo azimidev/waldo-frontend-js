@@ -55,6 +55,10 @@
 		},
 		methods: {
 			fetch(page = 1) {
+				// I could have extracted key to .env file for environment variables
+				// I also could extract the URL to a separate base URL API
+				// However, I did not, because of the time
+
 				fetch(`https://tools.hiwaldo.com/hiring/?key=wkbHE5F94aJRUJmE924DW4KBayrxWQ3q6LY8dtKf9PV&page=${ page }`)
 				.then(response => response.json())
 				.then(({ data }) => this.dataSet = data);
