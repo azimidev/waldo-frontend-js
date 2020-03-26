@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<div v-for="item in dataSet" :key="item.index" class="box">
-			<article class="media">
+		<div v-for="item in dataSet" class="box">
+			<article class="media" v-if="item">
+				{{ item.index }}
 				<div class="media-left has-text-centered is-centered">
 					<div class="colorBox" :style="`background-color: ${item.eyeColor};`">Eye Color</div>
 					<br>
@@ -24,9 +25,10 @@
 					</div>
 				</div>
 			</article>
+			<article v-else class="has-text-danger">No Record Found!</article>
 		</div>
 		<Paginate
-			:page-count="10"
+			:page-count="20"
 			:click-handler="fetch"
 			:prev-text="'Prev'"
 			:next-text="'Next'"
@@ -100,5 +102,6 @@
 		justify-content: center;
 		align-items: center;
 		color: white;
+		border: 2px solid black;
 	}
 </style>
