@@ -1,7 +1,22 @@
 <template>
 	<div>
-		<div v-for="item in dataSet">
-			{{ item.index }}
+		<div v-for="item in dataSet" :key="item.index" class="box">
+			<article class="media">
+				<div class="media-left">
+					<!--<figure class="image is-64x64">
+						<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+					</figure>-->
+				</div>
+				<div class="media-content">
+					<div class="content">
+						<p>
+							<strong>{{ item.name }}</strong> <small>{{ item.email }}</small> <small>({{ item.age }})</small>
+							<br>
+							{{ item.about }}
+						</p>
+					</div>
+				</div>
+			</article>
 		</div>
 		<Paginate
 			:page-count="10"
@@ -10,7 +25,6 @@
 			:next-text="'Next'"
 			:container-class="'pagination'">
 		</Paginate>
-	</div>
 	</div>
 </template>
 
@@ -58,7 +72,7 @@
 			flex-shrink: 1;
 
 			a {
-				border: 1px solid #ccc;
+				border: 1px solid #CCC;
 				border-radius: 5px;
 				padding: 3px 10px;
 
