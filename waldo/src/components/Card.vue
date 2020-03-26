@@ -2,18 +2,25 @@
 	<div>
 		<div v-for="item in dataSet" :key="item.index" class="box">
 			<article class="media">
-				<div class="media-left">
-					<!--<figure class="image is-64x64">
-						<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-					</figure>-->
+				<div class="media-left has-text-centered is-centered">
+					<div class="colorBox" :style="`background-color: ${item.eyeColor};`">Eye Color</div>
+					<br>
+					<span :class="['tag', item.isActive ? 'is-success' : 'is-danger']">{{ item.isActive ? 'Active' : 'Not Active' }}</span>
 				</div>
 				<div class="media-content">
 					<div class="content">
 						<p>
-							<strong>{{ item.name }}</strong> <small>{{ item.email }}</small> <small>({{ item.age }})</small>
+							<strong>{{ item.name }}</strong>
+							<small><a :href="`mailto:${item.email}`"> {{ item.email }}</a></small>
+							<small> ({{ item.age }})</small>
+							<small> ({{ item.gender }})</small>
 							<br>
 							{{ item.about }}
 						</p>
+						<span class="tag is-success">Balance: {{ item.balance }}</span> <br>
+						<span class="tag is-danger">Company: {{ item.company }}</span> <br>
+						<span class="tag is-info">Phone: {{ item.phone }}</span> <br>
+						<span class="tag is-dark">Address: {{ item.address }}</span> <br>
 					</div>
 				</div>
 			</article>
@@ -48,10 +55,7 @@
 			fetch(page = 1) {
 				fetch(`https://tools.hiwaldo.com/hiring/?key=wkbHE5F94aJRUJmE924DW4KBayrxWQ3q6LY8dtKf9PV&page=${ page }`)
 				.then(response => response.json())
-				.then(({ data }) => {
-					this.dataSet = data;
-					console.log(data);
-				});
+				.then(({ data }) => this.dataSet = data);
 			},
 		},
 	};
@@ -85,6 +89,16 @@
 				color: white;
 			}
 		}
+	}
 
+	.colorBox {
+		margin: 10px;
+		width: 96px;
+		height: 96px;
+		border-radius: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
 	}
 </style>
